@@ -13,8 +13,17 @@ function App() {
     completed : true
 }]);
 
+function addTodo(){
+  setTodos([...todos,{
+    title:"new Todo",
+    desc:"new todo added",
+    completed: true
+  }])
+}
+
   return (
         <div>
+        <button onClick={addTodo} >Add defaut TODO</button>
           {JSON.stringify(todos)} 
           {/* shows result but looks ugly */}
 
