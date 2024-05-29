@@ -60,6 +60,14 @@ steps:
 - import this schema in the index.js file : import {createTodo} from './types.js'
 - now we can use this schema to validate the input data
 - go to route in which u have to perform validation
-- 
+- there take the payload which have to validate > const updatePayload = req.body;
+- parse it through the validation methode module we created / parse it thorugh schema > const parsepayload = updateTodo.safeparse(updatePayload);
+- if its valid push it to database or do what u want
+- if not valid then send error to user > if(!parsepayload.success){
+        res.status(411).json({
+            msg: "You sent wrong input",
+        });
+        return;
+    }
 
 # Frontend Start
