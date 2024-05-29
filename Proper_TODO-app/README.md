@@ -38,4 +38,28 @@ steps:
 - they will run npm start
 - now they have all node modules and they can run the app.
 
+## create a index.js file
+- install express,
+- import express
+- create an express app
+- use express.json() // to parse the body of the request
+- create routes (get post put etc)
+- listen to a port
+
+## input validation : Zod
+- Before we act on users request we have to check if he passed the data in correct format/schema or not
+- for that we use Zod
+- npm install zod
+- create a new file in the BackEnd folder called types.js/schema.js (to keep track of users input schema/input type of data)
+- import zod and create a schema
+> const createTodo = zod.object({
+    title: zod.string(),
+    desc: zod.string()
+    });
+- export this schema : module.exports = {createTodo}
+- import this schema in the index.js file : import {createTodo} from './types.js'
+- now we can use this schema to validate the input data
+- go to route in which u have to perform validation
+- 
+
 # Frontend Start
