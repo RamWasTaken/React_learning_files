@@ -104,7 +104,8 @@ we can create a model to Actually interact with the database
 - complete the steps , and go to the Frontend folder (i named the app Frontend)
 - npm install
 - head to App.jsx and clean that file > it will look like this : 
->import './App.css'
+```
+import './App.css'
 
 function App() {
 
@@ -115,7 +116,22 @@ function App() {
   )
 }
 export default App
-
+```
 - now we have to create components for our app
 - create a new folder called components
-- create a new file called Todo.js
+- create a new file called CreateTodo.js
+- in this file we will take input from user { title , desc}
+- import this to app.jsx and render it
+- now we can get Todos from user
+> (export function CreateTodo(){
+    return(
+        <div>
+        <input type="text" placeholder="Title" /> <br />
+        <input type="text" placeholder="Description" /> <br />
+
+        <button>Add Todo</button>
+        </div>
+    )
+} like this.)
+- to display Todos we will create new component called Todos.js
+- in this component we will fetch the todos from the backend and display them.
