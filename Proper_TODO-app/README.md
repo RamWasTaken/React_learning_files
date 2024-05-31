@@ -46,7 +46,7 @@ steps:
 - create routes (get post put etc)
 - listen to a port
 
-## input validation : Zod
+## input validation : Zod objects
 - Before we act on users request we have to check if he passed the data in correct format/schema or not
 - for that we use Zod
 - npm install zod
@@ -69,5 +69,32 @@ steps:
         });
         return;
     }
+-till here we have created schema needed for our MOngoDB
+
+## mongodb : db.js
+- create db.js
+- npm install mongoose
+- then import mongoose in db.js > const mongoose = require('mongoose');
+- connect to the MongoDB using mongoose > mongoose.connect(URL);
+- here URL is URL to the databse of MOngoDB > mongodb+srv://admin:iQzubXdMZwtdEMtB@cluster0.ps2tprv.mongodb.net/todos?retryWrites=true&w=majority&appName=Cluster0
+> - here admin is the username
+> - iQzubXdMZwtdEMtB is the password
+> - cluster0.ps2tprv.mongodb.net is the cluster name
+> - todos is the database name
+> - appName is the name of the app
+
+- create a schema for todo app , which will tell database in which format we expect to store he data, making easier to store and retrieve data.
+- schema : structure of the data > const todoSchema = mongoose.Schema({
+    title: String,
+    desc: String,
+    completed: Boolean,
+});
+
+Now we have Schmea and connection to the database 
+we can create a model to Actually interact with the database
+- models are used to create, read, update, and delete documents from a collection
+- const todo = mongoose.model('todos',todoSchema);
+- export the model so that we can use it in other files > module.exports = todo;
+- now we can use this model to interact with the database > todo.find() , todo.create() etc
 
 # Frontend Start
