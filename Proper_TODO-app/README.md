@@ -117,13 +117,15 @@ function App() {
 }
 export default App
 ```
+## CreateTodo.jsx
 - now we have to create components for our app
 - create a new folder called components
 - create a new file called CreateTodo.js
 - in this file we will take input from user { title , desc}
 - import this to app.jsx and render it
 - now we can get Todos from user
-> (export function CreateTodo(){
+```
+export function CreateTodo(){
     return(
         <div>
         <input type="text" placeholder="Title" /> <br />
@@ -132,6 +134,9 @@ export default App
         <button>Add Todo</button>
         </div>
     )
-} like this.)
+}
+```
+
+## Todos.js
 - to display Todos we will create new component called Todos.js
 - in this component we will fetch the todos from the backend and display them.
