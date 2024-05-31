@@ -13,7 +13,10 @@ mongoose.connect(url);
 const todoSchema = mongoose.Schema({
     title: String,
     desc: String,
-    completed: Boolean,
+    completed: {
+        type: Boolean,
+        default: false,
+    },
 });
 
 const todo = mongoose.model('todos',todoSchema); // model correspond to collection in DB

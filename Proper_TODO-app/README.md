@@ -98,3 +98,24 @@ we can create a model to Actually interact with the database
 - now we can use this model to interact with the database > todo.find() , todo.create() etc
 
 # Frontend Start
+
+- go to the Root folder in terminal > Proper_TODO-app (for me)
+- npm create vite@latest
+- complete the steps , and go to the Frontend folder (i named the app Frontend)
+- npm install
+- head to App.jsx and clean that file > it will look like this : 
+>import './App.css'
+
+function App() {
+
+  return (
+    <div>
+    hi there
+    </div>
+  )
+}
+export default App
+
+- now we have to create components for our app
+- create a new folder called components
+- create a new file called Todo.js
