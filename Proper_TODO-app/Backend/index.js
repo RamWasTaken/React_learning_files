@@ -1,10 +1,12 @@
 const { todo } = require('./db');//importing the model from db.js
 const { createTodo,updateTodo } = require("./types");//importing the types from types.js, these types are used for input validation.
 
+const cors = require("cors");//now our backend is slightly insecure since any frontend can hit this backend.
 const express = require("express");
 const app = express();
 
 app.use(express.json());// we can parse a json body. // use applies the middleware to all the routes.
+app.use(cors());// to avoid cors error.: now any frontend can make a request to this server/Backend.
 
 // expected inputs for post is 
 //{
@@ -26,6 +28,9 @@ app.post("/todo",async function(req,res){
         desc: createPayload.desc,
         completed: false,
     });
+    res.json({
+        msg: "Todo has been created in DB",
+    })
     // as you can see we can do CRUD operations using the model todo which we created in db.js
     // 1st imported mongoose
     // then connected to the DB
@@ -33,20 +38,19 @@ app.post("/todo",async function(req,res){
     // then created a model : with schema and mongoose 
     // const todo = mongoose.model('todos',todoSchema);
     // then exported the model.
-    res.json({
-        msg: "Todo has been created in DB",
-    })
 })
 // we use get route to get the data from the DB.
 // expected input is nothing.
 // expected output is an array of objects.
 app.get("/todos",async function(req,res){
-    const todos = await todo.find(); // this find() will return all the todos in the collection.
+    const todos = await todo.find({}); // this find() will return all the todos in the collection.
 
     // if you want a specific todo
     // todo.find({ title : "title of the todo" });
     // or anything which is able to find that todo like desc , id , status of completion , Title of the todo.
-    res.json(todos);
+    res.json({
+        todos
+    });
 })
 
 app.put("/completed",async function(req,res){

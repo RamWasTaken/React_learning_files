@@ -7,6 +7,9 @@ It has following features:
 - Anyone can see their existing Todos
 - Anyone can mark Todo as done
 
+-Run Backend with Command - cd to Backend folder and run : node index.js
+-Run Frontend with Command - cd to Frontend folder and run : npm run dev
+
 # Backend start
 
 ## create a BackEnd Folder
@@ -140,3 +143,28 @@ export function CreateTodo(){
 ## Todos.js
 - to display Todos we will create new component called Todos.js
 - in this component we will fetch the todos from the backend and display them.
+
+## CORS Error
+Frontend : localhost:5173
+Backend : localhost:3000
+when we try to fetch data from localhost:3000 to localhost:5173 we get CORS error
+- CORS : Cross Origin Resource Sharing
+- does not allow silent requests
+- if u directly visit backend url in browser it will work ( from any device mobile tablet etc)
+- but if u try to fetch data from frontend to backend u get CORS error.
+- when we are on some domain like localhost:5173 and we try to fetch data from some other domain like localhost:3000 we get CORS error
+- you can not hit 1 backend url from another frontend url [silently]
+- are we hitting the backend from the frontend? yes
+- are we hiting some other backend from our backend? no
+- frontend and backend have diffrent (origins so we get CORS error) domains / links therefore if backend is not allowing frontend to fetch data from it we get CORS error
+- when we use cors in our Backend it allows any frontend / domain to hit / interact with it.
+
+## CORS installation 
+- for that we have to install cors in our backend
+- npm install cors
+- import cors in index.js > const cors = require('cors');
+- use cors in our app > app.use(cors());
+- now our backend will allow our frontend to fetch data from it.
+- previously we were getting CORS error because our backend was not allowing our frontend to fetch data from it.
+
+- if you want to specify which URL can hit your backend then u can pass origin to cors() > app.use(cors({origin: 'http://localhost:5173'}));
