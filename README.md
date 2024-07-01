@@ -4,6 +4,7 @@ when u are creating components in React there name should start with Capital let
 ```
 <header>NO 
 <Header>YES
+Component name should be Captial.
 ```
 
 # Uploading to github 
@@ -163,38 +164,53 @@ since we have to write map a JS function write it inside {}
 
 # 6.1
 
-## Re-rendering in React
+## Re-rendering in React App2.jsx
 
-A re-render means that
+<!-- A re-render means that
 1. React did some work to calculate what all should update in this component
 2. The component actually got called (you can put a log to confirm this)
-3. The inspector shows you a bounding box around the component
+3. The inspector shows you a bounding box around the component -->
 
 It happens when
 1. A state variable that is being used inside a component changes
 ```
-const [count, setCount] = useState(0);
+function keepTrackOfCount(){                //component
+  const [count, setCount] = useState(0);    //state variable
+  setCount(count + 1);
+}
 ```
 2. A prop that is being passed to a component changes
 ```
 <ChildComponent prop1={prop1} />
 ```
-3. The parent component re-renders
+3. The parent component re-renders :- when parent re-renders, all children will re-render for sure since its nested inside the parent component.
 ```
-<ParentComponent />
+function ParentComponent(){
+  const [count, setCount] = useState(0);
+  return(
+    <ChildComponent prop1={count} />
+  )
+}
 ```
 4. The component is forced to re-render
 ```
 forceUpdate();
 ```
-
-* A parent component re-render triggers all children re-rendering
-
 You want to minimise the number of re-renders to make a highly optimal react app
 The more the components that are getting re-rendered, the worse.
 
-## one way to fix it :- Pushing down the state
+## one way to fix it :- Pushing down the state to the lowest common ancestor
 
-Since where the state exist that component is gonna re-render
-so if we push the state down to the child component then only that component will re-render
-this will only re-render the child component(which is only one componenet) and not the parent component(which consists multiple components)
+App3.jsx
+
+when state changes the component which has that state re-renders
+so we should keep the state in lowest point in ancestory tress as possible
+(keep state at lowest common ancestor)
+as you can see in App3.jsx we pushed the state down to the headerWithCount component now only that component will re-render when state changes. instead of whole App3 component.
+
+## React Memo
+
+Memo let's you skip re-rendering component when it's props are unchanged.
+It's a higher order component that you can wrap around your component to prevent re-rendering.
+
+# Todo app - 6.1

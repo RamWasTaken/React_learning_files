@@ -19,6 +19,7 @@ function HeaderWithTitle(){
         <>
             <button onClick={handleClick} >Click here to change title</button>
             <Header title={title} ></Header>
+            <h1>{title}</h1>
         </>
     )
 }

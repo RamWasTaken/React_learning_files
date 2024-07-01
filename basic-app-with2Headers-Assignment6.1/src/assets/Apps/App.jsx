@@ -1,6 +1,4 @@
 // 6.1 rendering 2 tags with 1 parent tag : <> <Fragment> <div>
-import './App.css'
-
 function App() {
 
   return (
