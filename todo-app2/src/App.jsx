@@ -3,16 +3,21 @@ import './App.css'
 import { Todo } from './Components/Todo'
 import { CreateTodo } from './Components/CreateTodo'
 
+let counter = 4;
+
 function App() {
   const [todos, setTodos] = useState([{
+    id:1,
     title: "i dont have any title at the moment",
     desc: "Veniam officia Quis elit duis vniam.",
     done: false
   }, {
+    id:2,
     title: "i dont have any title at the moment",
     desc: "Veniam officia aliqation in aliqua eu veniam.",
     done: false
   }, {
+    id:3,
     title: "i dont have any title at the moment",
     desc: "Veniam officia aliqution in aliqua eu veniam.",
     done: false
@@ -20,6 +25,7 @@ function App() {
 
   function addTodo() {
     setTodos([...todos, {
+      id:counter++,
       title: "constant k",
       desc: "constant k",
       done: false
@@ -39,9 +45,17 @@ function App() {
       }
       <br />
       <p>without memo</p> */}
-      {todos.map(function (todo) {
+
+        {/* Without arrow function */}
+      {/* {todos.map(function (todo) {
         return(<Todo title={todo.title} desc={todo.desc} done={todo.done}></Todo>)
       })}
+       */}
+
+       {/* With arrow function */}
+      {
+        todos.map(todo => <Todo key={todo.id} title={todo.title} desc={todo.desc} done={todo.done}/> )
+      }
       <br />
     </>
   )
